@@ -2,7 +2,7 @@ const inputNode = document.querySelector(".js-search-input");
 const btnNode = document.querySelector(".js-button");
 const moviesListNode = document.querySelector(".js-movies-list");
 
-let moviesArr = [];
+let moviesArr = JSON.parse(localStorage.getItem("moviesArr")) || [];
 
 const renderError = (error) => {
   const errorNode = document.createElement("p");
@@ -19,17 +19,17 @@ const clearInput = () => {
 const inputValidate = () => {
   inputNode.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
-      inputValidate();
+      getMovies();
     }
   });
+};
 
+const getMovies = () => {
   if (inputNode.value.trim() === "") {
     renderError("*Please enter the name of movie!");
     return;
   }
-};
 
-const getMovies = () => {
   fetch(
     `https://www.omdbapi.com/?i=tt3896198&apikey=1592a150&s=${inputNode.value}`
   )
@@ -59,10 +59,10 @@ const getMovies = () => {
 const renderMovies = () => {
   let moviesHTML = "";
   moviesArr.forEach((item) => {
-    let poster = item.Poster === "N/A" ? 'img.svg' : item.Poster;
+    let poster = item.Poster === "N/A" ? "img.svg" : item.Poster;
     moviesHTML += `
             <li class="movie__item" id=${item.imdbID}>
-              <img class="movie__img" src=${poster} />
+              <img class="movie__img" src=${poster} /> 
               <div>
               <p class="movie__title">${item.Title}</p>
               <p class="movie__year">${item.Year}</p>
@@ -85,7 +85,11 @@ const init = () => {
 };
 init();
 
-btnNode.addEventListener("click", inputValidate);
-btnNode.addEventListener("click", getMovies);
-btnNode.addEventListener("click", clearInput);
+const searchBtnHandler = () => {
+  inputValidate();
+  getMovies();
+  clearInput();
+};
+
+btnNode.addEventListener("click", searchBtnHandler);
 moviesListNode.addEventListener("click", exportMovie);
