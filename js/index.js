@@ -12,18 +12,24 @@ const renderError = (error) => {
   moviesListNode.appendChild(errorNode);
 };
 
+const clearInput = () => {
+  inputNode.value = "";
+};
+
 const inputValidate = () => {
-  inputNode.addEventListener("keydown", (event) => { 
-    if (event.key === "Enter") { 
-      inputValidate(); 
-    } 
-  }); 
+  inputNode.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      inputValidate();
+    }
+  });
 
   if (inputNode.value.trim() === "") {
     renderError("*Please enter the name of movie!");
     return;
   }
+};
 
+const getMovies = () => {
   fetch(
     `https://www.omdbapi.com/?i=tt3896198&apikey=1592a150&s=${inputNode.value}`
   )
@@ -47,13 +53,7 @@ const inputValidate = () => {
     .catch((error) => {
       console.log(error);
       renderError();
-    }); 
-
-    clearInput();
-};
-
-const clearInput = () => {
-  inputNode.value = "";
+    });
 };
 
 const renderMovies = () => {
@@ -83,6 +83,8 @@ const init = () => {
   renderMovies();
 };
 init();
- 
+
 btnNode.addEventListener("click", inputValidate);
+btnNode.addEventListener("click", getMovies);
+btnNode.addEventListener("click", clearInput);
 moviesListNode.addEventListener("click", exportMovie);
