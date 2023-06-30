@@ -1,0 +1,134 @@
+html,
+body {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 775px;
+  margin: 0 auto;
+}
+
+.input__alert {
+  font-size: 20px;
+  font-style: italic;
+  color: red;
+}
+
+.movies__wrapper {
+  margin-top: 102px;
+  margin-bottom: 50px;
+}
+
+.movies__form {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.search__input {
+  box-sizing: border-box;
+  width: 500px;
+  padding-left: 15px;
+  height: 60px;
+  font-size: 32px;
+  background: white;
+  border: 1px solid #000000;
+}
+
+.movies__button {
+  width: 250px;
+  background: #0094ff;
+  font-family: "Inter";
+  font-size: 32px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+}
+
+.movie__title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.movie__item {
+  padding: 30px;
+  width: 774px;
+  display: flex;
+  column-gap: 65px;
+  border-radius: 35px;
+  transition: background-color 0.7s ease;
+}
+
+.movie__item:hover {
+  background-color: #d9d9d9;
+  cursor: pointer;
+}
+
+.movie__img {
+  width: 100px;
+}
+
+.movie__title {
+  margin-bottom: 35px;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.movie__year {
+  margin-top: 7px;
+  color: #0094ff;
+  font-size: 25px;
+}
+
+.movie__type {
+  margin-top: 18px;
+  font-size: 30px;
+}
+
+/* css для страницы с карточкой */
+.card__cont {
+  width: 1150px;
+  margin: 60px auto 80px;
+}
+
+.card__link {
+  margin-bottom: 80px;
+}
+
+.return__link {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  text-decoration: none;
+  color: #000;
+}
+
+.card__description {
+  margin-bottom: 75px;
+  display: flex;
+  gap: 90px;
+}
+
+.movie__description {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 36px;
+  margin-bottom: 20px;
+}
+
+span {
+  color: #0094ff;
+  margin-left: 10px;
+}
+
+.movie__plot {
+  font-size: 30px;
+}
