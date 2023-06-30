@@ -59,9 +59,10 @@ const getMovies = () => {
 const renderMovies = () => {
   let moviesHTML = "";
   moviesArr.forEach((item) => {
+    let poster = item.Poster === "N/A" ? 'img.svg' : item.Poster;
     moviesHTML += `
             <li class="movie__item" id=${item.imdbID}>
-              <img class="movie__img" src=${item.Poster} />
+              <img class="movie__img" src=${poster} />
               <div>
               <p class="movie__title">${item.Title}</p>
               <p class="movie__year">${item.Year}</p>
